@@ -8,10 +8,8 @@
 
 int matrizEsqueleto[LINHA][COLUNA] = { 0 };
 
-void renderizaCampo(int posPlayerLinha, int posPlayerColuna, int seedSorteio) {
-  int zumbis[LINHA][COLUNA];
-
-  printf ("[%d][%d]\n\n", posPlayerLinha, posPlayerColuna);
+int renderizaCampo(int posPlayerLinha, int posPlayerColuna, int seedSorteio, int pontuacao) {
+  int zumbis[LINHA][COLUNA], municaoRestante;
 
   srand(seedSorteio);
 
@@ -32,6 +30,9 @@ void renderizaCampo(int posPlayerLinha, int posPlayerColuna, int seedSorteio) {
       } 
       else if (matrizEsqueleto[i][j] == -1) {
         printf ("* ");
+        
+        municaoRestante = pontuacao - zumbis[i][j];
+
         matrizEsqueleto[i][j] = -2;
       }
       else {
@@ -41,15 +42,18 @@ void renderizaCampo(int posPlayerLinha, int posPlayerColuna, int seedSorteio) {
     printf ("\n");
   }
   
+  return municaoRestante;
 }
 
 int main () {
   int sorteio[LINHA][COLUNA];
   int seed = time(NULL);
   int linhaAtual = 0, colunaAtual = 0;
+  int municao = 50;
   char comando;
 
-  renderizaCampo(linhaAtual, colunaAtual, seed);
+  renderizaCampo(linhaAtual, colunaAtual, seed, municao);
+    printf ("\n\t MUNIÇÃO ATUA: %d\n\n", municao);
 
   while (1) {
 
@@ -77,7 +81,8 @@ int main () {
     }
 
     system ("clear");
-    renderizaCampo(linhaAtual, colunaAtual, seed);
+    municao = renderizaCampo(linhaAtual, colunaAtual, seed, municao);
+    printf ("\n\t MUNIÇÃO ATUAL: %d\n\n", municao);
 
   }
 
