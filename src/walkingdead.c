@@ -9,6 +9,8 @@
 void renderizaCampo(int posPlayerLinha, int posPlayerColuna, int seedSorteio) {
   int zumbis[LINHA][COLUNA];
 
+  printf ("[%d][%d]\n\n", posPlayerLinha, posPlayerColuna);
+
   srand(seedSorteio);
 
   for(int i = 0; i < LINHA; i++) {
@@ -19,10 +21,11 @@ void renderizaCampo(int posPlayerLinha, int posPlayerColuna, int seedSorteio) {
 
   for(int i = 0; i < LINHA; i++) {
     for(int j = 0; j < COLUNA; j++) {
-      if (posPlayerLinha == i && posPlayerColuna == j)
-        printf ("* ");
-      else
-        printf ("%d ", zumbis[i][j]);
+      printf (
+        (posPlayerColuna == j && posPlayerLinha == i) 
+        ? "* "
+        : "%d ", zumbis[i][j]
+      );
     }
     printf ("\n");
   }
@@ -30,10 +33,38 @@ void renderizaCampo(int posPlayerLinha, int posPlayerColuna, int seedSorteio) {
 }
 
 int main () {
-  int linha, coluna, sorteio[LINHA][COLUNA];
+  int sorteio[LINHA][COLUNA];
   int seed = time(NULL);
+  int linhaAtual = 0, colunaAtual = 0;
+  char comando;
 
-  renderizaCampo(5, 5, seed);
+  renderizaCampo(linhaAtual, colunaAtual, seed);
+
+  while (1) {
+
+    comando = getch();
+    switch (comando) {
+      case 'w':
+        linhaAtual--;
+        break;
+      case 's':
+          linhaAtual++;
+        break;
+      case 'a':
+          colunaAtual--;
+        break;
+      case 'd':
+          colunaAtual++;
+        break;
+      default:
+          exit(1);
+        break;
+    }
+
+    system ("clear");
+    renderizaCampo(linhaAtual, colunaAtual, seed);
+
+  }
 
   return 0;
 }
