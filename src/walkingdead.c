@@ -82,6 +82,16 @@ int main () {
 
     system ("clear");
     municao = renderizaCampo(linhaAtual, colunaAtual, seed, municao);
+    if (municao <= 0) {
+      system("clear");
+      printf("  ____ \n");
+      printf(" /     \\\n");
+      printf("| () () |  VOCÊ FOI INFECTADO\n");
+      printf(" \\  ^  /        GAME OVER\n");
+      printf("  |||||   \n");
+      printf("  |||||   \n");
+      break;
+    } else 
     printf ("\n\t MUNIÇÃO ATUAL: %d\n\n", municao);
 
   }
