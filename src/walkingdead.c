@@ -53,7 +53,7 @@ int main () {
   char comando;
 
   renderizaCampo(linhaAtual, colunaAtual, seed, municao);
-    printf ("\n\t MUNIÇÃO ATUA: %d\n\n", municao);
+    printf ("\n\t MUNIÇÃO ATUAL: %d\n\n", municao);
 
   while (1) {
 
