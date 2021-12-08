@@ -6,6 +6,8 @@
 #define COLUNA 10
 #define LINHA 10
 
+int matrizEsqueleto[LINHA][COLUNA] = { 0 };
+
 void renderizaCampo(int posPlayerLinha, int posPlayerColuna, int seedSorteio) {
   int zumbis[LINHA][COLUNA];
 
@@ -21,11 +23,20 @@ void renderizaCampo(int posPlayerLinha, int posPlayerColuna, int seedSorteio) {
 
   for(int i = 0; i < LINHA; i++) {
     for(int j = 0; j < COLUNA; j++) {
-      printf (
-        (posPlayerColuna == j && posPlayerLinha == i) 
-        ? "* "
-        : "%d ", zumbis[i][j]
-      );
+      if(posPlayerColuna == j && posPlayerLinha == i) {
+        matrizEsqueleto[i][j] = -1;
+      }
+
+      if(matrizEsqueleto[i][j] == -2) {
+        printf ("_ ");
+      } 
+      else if (matrizEsqueleto[i][j] == -1) {
+        printf ("* ");
+        matrizEsqueleto[i][j] = -2;
+      }
+      else {
+        printf ("%d ", zumbis[i][j]);
+      }
     }
     printf ("\n");
   }
