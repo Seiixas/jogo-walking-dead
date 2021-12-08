@@ -45,16 +45,20 @@ int main () {
     comando = getch();
     switch (comando) {
       case 'w':
-        linhaAtual--;
+          linhaAtual--;
+          if (linhaAtual < 0) linhaAtual++;
         break;
       case 's':
           linhaAtual++;
+          if (linhaAtual > (LINHA - 1)) linhaAtual--;
         break;
       case 'a':
           colunaAtual--;
+          if (colunaAtual < 0) colunaAtual++;
         break;
       case 'd':
           colunaAtual++;
+          if (colunaAtual > (COLUNA - 1)) colunaAtual--;
         break;
       default:
           exit(1);
