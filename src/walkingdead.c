@@ -8,14 +8,21 @@
 
 int matrizEsqueleto[LINHA][COLUNA] = { 0 };
 
-void debugMatriz() {
-  for (int i = 0; i < LINHA; i++) {
-    for (int j = 0; j < COLUNA; j++) {
-      printf (" %d ", matrizEsqueleto[i][j]);
-    }
-    printf ("\n");
-  }
-  
+void jogoGanho() {
+  system("clear");
+  printf("              ,       \n");
+  printf("     __  _.-\"` `'-.   \n");
+  printf("    /||\\'._ __{}_(     PARABÉNS, SOBREVIVENTE!\n");
+  printf("    ||||  |'--.__\\    CONSEGUIU CHEGAR AO ABRIGO\n");
+  printf("    |  L.(   ^_\\^     \n");
+  printf("    \\ .-' |   _ |     \n");
+  printf("    | |   )\\___/      \n");
+  printf("    |  \\-'`:._]       \n");
+  printf("    \\__/;      '-.    \n");
+  printf("    |   |o     __ \\   \n");
+  printf("    |   |o     )( |   \n");
+  printf("    |   |o     \\/ \\   \n");
+  exit(1);
 }
 
 int renderizaCampo(int posPlayerLinha, int posPlayerColuna, int seedSorteio, int pontuacao) {
@@ -29,6 +36,7 @@ int renderizaCampo(int posPlayerLinha, int posPlayerColuna, int seedSorteio, int
     }
   }
 
+  printf ("*\n");
   for(int i = 0; i < LINHA; i++) {
     for(int j = 0; j < COLUNA; j++) {
       if(posPlayerColuna == j && posPlayerLinha == i) {
@@ -51,6 +59,12 @@ int renderizaCampo(int posPlayerLinha, int posPlayerColuna, int seedSorteio, int
     }
     printf ("\n");
   }
+
+  printf ("\t\t [@]\n");
+  
+  if(posPlayerColuna == (COLUNA - 1) && posPlayerLinha == (LINHA - 1) && municaoRestante >= 0) {
+    jogoGanho();
+  }
   
   return municaoRestante;
 }
@@ -70,6 +84,7 @@ int main () {
   while (municao >= 0) {
 
     comando = getch();
+    system("clear");
     switch (comando) {
       case 'w':
           linhaAtual--;
@@ -80,7 +95,7 @@ int main () {
             linhaAtual++;
             matrizEsqueleto[linhaAtual][colunaAtual] == 0;
             renderizaCampo(linhaAtual, colunaAtual, seed, municao);
-            printf ("\tMovimento irregular\n\n");
+            printf ("\n\tMovimento irregular");
           }
         break;
       case 's':
@@ -92,7 +107,7 @@ int main () {
             linhaAtual--;
             matrizEsqueleto[linhaAtual][colunaAtual] == 0;
             renderizaCampo(linhaAtual, colunaAtual, seed, municao);
-            printf ("\tMovimento irregular\n\n");
+            printf ("\n\tMovimento irregular");
           }
         break;
       case 'a':
@@ -104,7 +119,7 @@ int main () {
             colunaAtual++;
             matrizEsqueleto[linhaAtual][colunaAtual] == 0;
             renderizaCampo(linhaAtual, colunaAtual, seed, municao);
-            printf ("\tMovimento irregular\n\n");
+            printf ("\n\tMovimento irregular");
           }
         break;
       case 'd':
@@ -116,7 +131,7 @@ int main () {
             colunaAtual--;
             matrizEsqueleto[linhaAtual][colunaAtual] == 0;
             renderizaCampo(linhaAtual, colunaAtual, seed, municao);
-            printf ("\tMovimento irregular\n\n");
+            printf ("\n\tMovimento irregular");
           }
         break;
       default:
@@ -124,6 +139,7 @@ int main () {
         break;
     }
 
+    municao = 500;
     printf ("\n\t MUNIÇÃO ATUAL: %d\n\n", municao);
 
   }
