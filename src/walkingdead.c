@@ -8,6 +8,38 @@
 
 int matrizEsqueleto[LINHA][COLUNA] = { 0 };
 
+void menu() {
+  printf("                  .....   \n");                                               
+  printf("                 C C  /   \n");                                               
+  printf("                /<   /    \n"); 
+  printf(" ___ __________/_#__=o    \n");  
+  printf("/(- /(\\_\\________   \\     \n"); 
+  printf("\\ ) \\ )_      \\o     \\    \n"); 
+  printf("==================== THE WALKING DEAD ======================\n");
+  printf("=   Olá, sobrevivente!                                     =\n");
+  printf("=                                                          =\n");
+  printf("=  Ao buscar por suprimentos na cidade, você ficou         =\n");
+  printf("=  encurralado em uma loja por uma horda que escutou       =\n");
+  printf("=  um louco atirando de sniper no telhado                  =\n");
+  printf("=                                                          =\n");
+  printf("=  Você possui apenas 50 munições para atravessar          =\n");
+  printf("=  os quarteirões que possuem certa quantidade de zumbis   =\n");
+  printf("=  para cada quantidade, será descontada de suas munições  =\n");
+  printf("=                                                          =\n");
+  printf("=               Teclas de navegação:                       =\n");
+  printf("=                                                          =\n");
+  printf("=                        'w'                               =\n");
+  printf("=                                                          =\n");
+  printf("=                  'a'	       'd'                         =\n");
+  printf("=                                                          =\n");
+  printf("=                        's'                               =\n");
+  printf("=                                                          =\n");
+  printf("======================= ROCKET TEAM ========================\n");
+
+  getchar();
+  system("clear");
+}
+
 void jogoGanho() {
   system("clear");
   printf("              ,       \n");
@@ -76,13 +108,14 @@ int main () {
   int municao = 50;
   char comando;
 
+  menu();
+
   system("clear");
 
   renderizaCampo(linhaAtual, colunaAtual, seed, municao);
   printf ("\n\t MUNIÇÃO ATUAL: %d\n\n", municao);
 
   while (municao >= 0) {
-
     comando = getch();
     system("clear");
     switch (comando) {
