@@ -66,11 +66,8 @@ int main () {
 
   renderizaCampo(linhaAtual, colunaAtual, seed, municao);
   printf ("\n\t MUNIÇÃO ATUAL: %d\n\n", municao);
-  int linhaAnterior, colunaAnterior;
 
-  while (1) {
-    linhaAnterior = linhaAtual;
-    colunaAnterior = colunaAtual;
+  while (municao >= 0) {
 
     comando = getch();
     switch (comando) {
@@ -127,19 +124,17 @@ int main () {
         break;
     }
 
-    if (municao <= 0) {
-      system("clear");
-      printf("  ____ \n");
-      printf(" /     \\\n");
-      printf("| () () |  VOCÊ FOI INFECTADO\n");
-      printf(" \\  ^  /        GAME OVER\n");
-      printf("  |||||   \n");
-      printf("  |||||   \n");
-      break;
-    } else 
-      printf ("\n\t MUNIÇÃO ATUAL: %d\n\n", municao);
+    printf ("\n\t MUNIÇÃO ATUAL: %d\n\n", municao);
 
   }
+  
+  system("clear");
+  printf("  ____ \n");
+  printf(" /     \\\n");
+  printf("| () () |  VOCÊ FOI INFECTADO\n");
+  printf(" \\  ^  /        GAME OVER\n");
+  printf("  |||||   \n");
+  printf("  |||||   \n");
 
   return 0;
 }
