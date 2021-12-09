@@ -34,8 +34,10 @@ void menu() {
   printf("=                                                          =\n");
   printf("=                        's'                               =\n");
   printf("=                                                          =\n");
+  printf("=            Pressione 'x' para encerrar o jogo.           =\n");
   printf("======================= ROCKET TEAM ========================\n");
 
+  printf("\n\nPressione ENTER para continuar...");
   getchar();
   system("clear");
 }
@@ -172,7 +174,6 @@ int main () {
         break;
     }
 
-    municao = 500;
     printf ("\n\t MUNIÇÃO ATUAL: %d\n\n", municao);
 
   }
