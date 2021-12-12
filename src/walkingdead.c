@@ -126,54 +126,83 @@ int main () {
     switch (comando) {
       case 'w':
           linhaAtual--;
-          if (linhaAtual < 0) linhaAtual++;
-          if (matrizEsqueleto[linhaAtual][colunaAtual] == CAMINHO_LIVRE)
-            municao = renderizaCampo(linhaAtual, colunaAtual, seed, municao);
-          else {
+          if (linhaAtual < 0) {
             linhaAtual++;
-            matrizEsqueleto[linhaAtual][colunaAtual] == CAMINHO_LIVRE;
             renderizaCampo(linhaAtual, colunaAtual, seed, municao);
             printf ("\n\tMovimento irregular");
+          }
+          else {
+            if (matrizEsqueleto[linhaAtual][colunaAtual] == CAMINHO_LIVRE)
+              municao = renderizaCampo(linhaAtual, colunaAtual, seed, municao);
+            else {
+              linhaAtual++;
+              matrizEsqueleto[linhaAtual][colunaAtual] == CAMINHO_LIVRE;
+              renderizaCampo(linhaAtual, colunaAtual, seed, municao);
+              printf ("\n\tMovimento irregular");
+            }
           }
         break;
       case 's':
           linhaAtual++;
-          if (linhaAtual > (LINHA - 1)) linhaAtual--;
-          if (matrizEsqueleto[linhaAtual][colunaAtual] == CAMINHO_LIVRE)
-            municao = renderizaCampo(linhaAtual, colunaAtual, seed, municao);
-          else {
+          if (linhaAtual > (LINHA - 1)) {
             linhaAtual--;
-            matrizEsqueleto[linhaAtual][colunaAtual] == CAMINHO_LIVRE;
             renderizaCampo(linhaAtual, colunaAtual, seed, municao);
             printf ("\n\tMovimento irregular");
+          }
+          else {
+            if (matrizEsqueleto[linhaAtual][colunaAtual] == CAMINHO_LIVRE)
+            municao = renderizaCampo(linhaAtual, colunaAtual, seed, municao);
+            else {
+              linhaAtual--;
+              matrizEsqueleto[linhaAtual][colunaAtual] == CAMINHO_LIVRE;
+              renderizaCampo(linhaAtual, colunaAtual, seed, municao);
+              printf ("\n\tMovimento irregular");
+            }
           }
         break;
       case 'a':
           colunaAtual--;
-          if (colunaAtual < 0) colunaAtual++;
-          if (matrizEsqueleto[linhaAtual][colunaAtual] == CAMINHO_LIVRE)
-            municao = renderizaCampo(linhaAtual, colunaAtual, seed, municao);
-          else {
+          if (colunaAtual < 0) {
             colunaAtual++;
-            matrizEsqueleto[linhaAtual][colunaAtual] == CAMINHO_LIVRE;
             renderizaCampo(linhaAtual, colunaAtual, seed, municao);
             printf ("\n\tMovimento irregular");
+          }
+          else {
+            if (matrizEsqueleto[linhaAtual][colunaAtual] == CAMINHO_LIVRE)
+              municao = renderizaCampo(linhaAtual, colunaAtual, seed, municao);
+            else {
+              colunaAtual++;
+              matrizEsqueleto[linhaAtual][colunaAtual] == CAMINHO_LIVRE;
+              renderizaCampo(linhaAtual, colunaAtual, seed, municao);
+              printf ("\n\tMovimento irregular");
+            }
           }
         break;
       case 'd':
           colunaAtual++;
-          if (colunaAtual > (COLUNA - 1)) colunaAtual--;
-          if (matrizEsqueleto[linhaAtual][colunaAtual] == CAMINHO_LIVRE)
-            municao = renderizaCampo(linhaAtual, colunaAtual, seed, municao);
-          else {
+          if (colunaAtual > (COLUNA - 1)) { 
             colunaAtual--;
-            matrizEsqueleto[linhaAtual][colunaAtual] == CAMINHO_LIVRE;
             renderizaCampo(linhaAtual, colunaAtual, seed, municao);
             printf ("\n\tMovimento irregular");
           }
+          else {
+            if (matrizEsqueleto[linhaAtual][colunaAtual] == CAMINHO_LIVRE)
+              municao = renderizaCampo(linhaAtual, colunaAtual, seed, municao);
+            else {
+              colunaAtual--;
+              matrizEsqueleto[linhaAtual][colunaAtual] == CAMINHO_LIVRE;
+              renderizaCampo(linhaAtual, colunaAtual, seed, municao);
+              printf ("\n\tMovimento irregular");
+            }
+          }
+          
+        break;
+      case 'x':
+          exit(1);
         break;
       default:
-          exit(1);
+          renderizaCampo(linhaAtual, colunaAtual, seed, municao);
+          printf ("\n\tComando inválido!");
         break;
     }
 
